@@ -12,7 +12,7 @@ const programmes = [
     points: [
       "Eligibility rules and the application process will be published here.",
       "Every award is reviewed by the committee.",
-      "Funded by the KES 500 monthly contributions and partner gifts.",
+            "Funded by members' monthly contributions and partner gifts.",
     ],
   },
   {
@@ -115,8 +115,11 @@ export default function Programmes() {
 
       <section className="cta">
         <div className="wrap">
-          <div><h2>Help us reach more students</h2><p style={{ margin: 0 }}>Your KES 500 each month supports every programme above.</p></div>
-          <Link className="btn" to="/membership#join">Become a member</Link>
+                    <div><h2>Help us reach more students</h2><p style={{ margin: 0 }}>Your monthly contribution supports every programme above.</p></div>
+                    <div style={{ display: "flex", gap: ".8rem", flexWrap: "wrap" }}>
+            <Link className="btn" to="/membership#join">Become a member</Link>
+            <Link className="btn ghost" to="/volunteer">Mentor or volunteer</Link>
+          </div>
         </div>
       </section>
 

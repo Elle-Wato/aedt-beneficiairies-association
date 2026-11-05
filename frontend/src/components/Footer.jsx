@@ -16,12 +16,12 @@ export default function Footer() {
           <div>
             <h3>Explore</h3>
             <Link to="/about">About us</Link><Link to="/programmes">Programmes</Link>
-            <Link to="/news">News</Link><Link to="/gallery">Gallery</Link>
-            <Link to="/membership">Membership</Link><Link to="/contact">Contact</Link>
+            <Link to="/news">News and events</Link><Link to="/gallery">Gallery</Link><Link to="/contact">Contact</Link>
           </div>
           <div>
-            <h3>Legal</h3>
-            <Link to="/privacy">Privacy statement</Link><Link to="/cookies">Cookie policy</Link>
+            <h3>Get involved</h3>
+            <Link to="/membership#join">Become a member</Link><Link to="/contribute">Contribute</Link>
+            <Link to="/volunteer">Mentor or volunteer</Link>
           </div>
           <div>
             <h3>Find us</h3>
@@ -32,7 +32,10 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <small>© {new Date().getFullYear()} AEDT Beneficiaries Association. All rights reserved.</small>
+        <div className="fbottom">
+          <small>© {new Date().getFullYear()} AEDT Beneficiaries Association. All rights reserved.</small>
+          <span><Link to="/privacy">Privacy statement</Link> <Link to="/cookies">Cookie policy</Link></span>
+        </div>
       </div>
     </footer>
   );

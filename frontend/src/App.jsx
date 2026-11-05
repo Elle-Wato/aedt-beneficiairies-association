@@ -9,7 +9,9 @@ import Programmes from "./pages/Programmes.jsx";
 import Membership from "./pages/Membership.jsx";
 import Contact from "./pages/Contact.jsx";
 import News from "./pages/News.jsx";
+import Volunteer from "./pages/Volunteer.jsx";
 import Gallery from "./pages/Gallery.jsx";
+  import ScrollEffects from "./components/ScrollEffects.jsx";
 import { Privacy, Cookies } from "./pages/Legal.jsx";
 
 export default function App() {
@@ -32,6 +34,7 @@ export default function App() {
           <Route path="/cookies" element={<Cookies />} />
           <Route path="/news" element={<News />} />
 <Route path="/gallery" element={<Gallery />} />
+<Route path="/volunteer" element={<Volunteer />} />
           <Route path="*" element={<section className="wrap page"><h1>Page not found</h1><p>Use the menu to find what you need.</p></section>} />
         </Routes>
       </main>
