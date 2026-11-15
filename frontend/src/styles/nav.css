@@ -1,0 +1,111 @@
+/* Top bar, header and mobile menu. Scoped with the nv- prefix. */
+.nv-top, .nv, .nv-drawer {
+  --nv-green: var(--green, #0F4A33); --nv-green-d: var(--green-d, #0A3324); --nv-green-dd: #0b2a1b; --nv-gold: var(--gold, #D9A92F); --nv-ink: var(--ink, #1B2433); --nv-muted: var(--muted, #566074);
+}
+/* top bar */
+.nv-top { background: var(--nv-green-dd); color: rgba(255, 255, 255, .82); font-size: .84rem; }
+.nv-top-in { display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-height: 40px; }
+.nv-info { display: flex; gap: 1.4rem; min-width: 0; }
+.nv-info a { display: inline-flex; align-items: center; gap: .4rem; color: inherit; text-decoration: none; white-space: nowrap; }
+.nv-info a:hover { color: #fff; }
+.nv-info svg { color: var(--nv-gold); flex: none; }
+.nv-top-right { display: flex; align-items: center; gap: 1rem; }
+.nv-top-right a { color: rgba(255, 255, 255, .82); }
+.nv-top-right a:hover { color: #fff; }
+.nv-give { display: inline-flex; align-items: center; gap: .35rem; padding: .3rem .85rem; border-radius: 999px; background: var(--nv-gold); color: var(--navy, #12254A) !important; font-weight: 700; text-decoration: none; }
+.nv-give:hover { filter: brightness(1.05); }
+
+/* header */
+.nv { position: sticky; top: 0; z-index: 60; background: rgba(255, 255, 255, .86); backdrop-filter: saturate(1.6) blur(14px); -webkit-backdrop-filter: saturate(1.6) blur(14px);
+  border-bottom: 1px solid rgba(21, 33, 27, .07); transition: box-shadow .3s, background .3s; }
+.nv.scrolled { background: rgba(255, 255, 255, .95); box-shadow: 0 10px 30px -18px rgba(11, 42, 27, .35); }
+.nv-in { display: flex; align-items: center; gap: 1.2rem; height: 76px; transition: height .3s; }
+.nv.scrolled .nv-in { height: 64px; }
+.nv-brand { display: flex; align-items: center; gap: .65rem; text-decoration: none; color: var(--nv-ink); flex: none; }
+.nv-brand img { height: 50px; width: auto; display: block; transition: height .3s; }
+.nv.scrolled .nv-brand img { height: 42px; }
+@media (max-width: 760px) { .nv-brand img { height: 40px; } }
+.nv-badge { display: grid; place-items: center; height: 42px; padding: 0 .65rem; border-radius: 12px; font-weight: 800; letter-spacing: .04em; font-size: .95rem; color: #fff;
+  background: linear-gradient(135deg, var(--nv-green), #1d6b4a); box-shadow: 0 8px 18px -10px rgba(29, 90, 59, .8); }
+.nv-name { display: flex; flex-direction: column; line-height: 1.1; }
+.nv-name b { font-size: 1rem; }
+.nv-name small { font-size: .78rem; color: var(--nv-muted); letter-spacing: .08em; text-transform: uppercase; font-weight: 600; }
+.nv-links { display: flex; align-items: center; gap: .2rem; margin-left: auto; }
+.nv-links a { position: relative; padding: .55rem .7rem; color: var(--nv-ink); text-decoration: none; font-weight: 500; font-size: .94rem; border-radius: 10px; transition: color .2s, background .2s; }
+.nv-links a::after { content: ""; position: absolute; left: .7rem; right: .7rem; bottom: .28rem; height: 2px; border-radius: 2px; background: var(--nv-gold); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
+.nv-links a:hover { color: var(--nv-green); background: rgba(29, 90, 59, .06); }
+.nv-links a:hover::after, .nv-links a.active::after { transform: scaleX(1); }
+.nv-links a.active { color: var(--nv-green); font-weight: 700; }
+.nv-join { flex: none; }
+.nv-join svg { margin-left: .3rem; vertical-align: -3px; }
+.nv-burger { display: none; width: 44px; height: 44px; border-radius: 12px; border: 1px solid rgba(21, 33, 27, .12); background: #fff; color: var(--nv-ink); cursor: pointer; place-items: center; margin-left: auto; }
+
+/* mobile drawer */
+.nv-scrim { position: fixed; inset: 0; z-index: 70; background: rgba(8, 20, 14, .45); opacity: 0; visibility: hidden; transition: opacity .3s, visibility 0s .3s; }
+.nv-scrim.open { opacity: 1; visibility: visible; transition: opacity .3s; }
+.nv-drawer { position: fixed; top: 0; right: 0; bottom: 0; z-index: 71; width: min(420px, 92vw); background: #fff; display: flex; flex-direction: column; padding: 1rem 1.4rem 1.6rem;
+  transform: translateX(100%); visibility: hidden; transition: transform .4s cubic-bezier(.2, .7, .2, 1), visibility 0s .4s; box-shadow: -30px 0 60px -30px rgba(0, 0, 0, .4); overflow-y: auto; }
+.nv-drawer.open { transform: none; visibility: visible; transition: transform .4s cubic-bezier(.2, .7, .2, 1); }
+.nv-drawer .nv-burger { display: grid; }
+.nv-drawer-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 1rem; border-bottom: 1px solid rgba(21, 33, 27, .08); }
+.nv-dlinks { display: flex; flex-direction: column; padding: .8rem 0; }
+.nv-dlinks a { display: flex; justify-content: space-between; align-items: center; padding: .95rem .2rem; font-size: 1.2rem; font-weight: 600; color: var(--nv-ink); text-decoration: none;
+  border-bottom: 1px solid rgba(21, 33, 27, .06); opacity: 0; transform: translateX(16px); transition: opacity .35s, transform .35s, color .2s; }
+.nv-drawer.open .nv-dlinks a { opacity: 1; transform: none; }
+.nv-dlinks a svg { color: rgba(21, 33, 27, .3); transition: transform .2s, color .2s; }
+.nv-dlinks a:hover svg, .nv-dlinks a.active svg { color: var(--nv-gold); transform: translateX(3px); }
+.nv-dlinks a.active { color: var(--nv-green); }
+.nv-dcta { display: grid; gap: .7rem; margin: 1rem 0 1.4rem; }
+.nv-dcta .btn { justify-content: center; }
+.nv-dinfo { margin-top: auto; display: grid; gap: .7rem; padding: 1.1rem; border-radius: 16px; background: #f4f7f3; font-size: .9rem; }
+.nv-dinfo a { display: flex; align-items: center; gap: .5rem; color: var(--nv-ink); text-decoration: none; word-break: break-all; }
+.nv-dinfo svg { color: var(--nv-green); flex: none; }
+
+@media (max-width: 1240px) {
+  .nv-links, .nv-join { display: none; }
+  .nv-burger { display: grid; }
+}
+@media (max-width: 760px) {
+  .nv-info a span { display: none; }
+  .nv-info { gap: .9rem; }
+  .nv-in { height: 66px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nv-drawer, .nv-dlinks a, .nv-scrim { transition: none; }
+}
+
+/* social icons from Social.jsx (index.css makes them large white circles) */
+.nv-top .socials { margin: 0; gap: .3rem; }
+.nv-top .socials a { width: 28px; height: 28px; border-color: rgba(255, 255, 255, .3); }
+.nv-top .socials svg { width: 14px; height: 14px; }
+.nv-dinfo .socials { margin: .3rem 0 0; }
+.nv-dinfo .socials a { width: 38px; height: 38px; border-color: var(--green, #0F4A33); color: var(--green, #0F4A33); }
+.nv-dinfo .socials a:hover { background: var(--green, #0F4A33); color: #fff; }
+.nv-name b { font-weight: 800; }
+
+.nv-links a { white-space: nowrap; }
+
+
+/* theme button and language preferences */
+.nv-tools { display: flex; align-items: center; gap: .5rem; flex: none; }
+.nv-dprefs { display: grid; gap: .6rem; padding: 1rem 0 .2rem; }
+.nv-dlabel { font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted, #566074); }
+@media (max-width: 1240px) {
+  .nv-tools { margin-left: auto; }
+  .nv-burger { margin-left: .5rem; }
+  [dir="rtl"] .nv-tools { margin-left: 0; margin-right: auto; }
+  [dir="rtl"] .nv-burger { margin-left: 0; margin-right: .5rem; }
+}
+@media (max-width: 760px) { .nv-top .socials { display: none; } }
+
+/* wider header so the full menu and "Become a member" fit */
+.nv .nv-in, .nv-top .nv-top-in { max-width: 1360px; }
+.nv-join { padding: .7rem 1.25rem; white-space: nowrap; }
+.nv-links { gap: .1rem; }
+@media (max-width: 1500px) { .nv-links a { padding: .5rem .5rem; font-size: .9rem; } .nv-links a::after { left: .5rem; right: .5rem; } .nv-in { gap: .8rem; } }
+@media (max-width: 1320px) {
+  .nv-links, .nv-join { display: none; }
+  .nv-burger { display: grid; }
+  .nv-tools { margin-left: auto; }
+  .nv-burger { margin-left: .5rem; }
+}

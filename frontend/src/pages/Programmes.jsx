@@ -1,22 +1,23 @@
-import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { GraduationCap, Utensils, HeartHandshake, Wrench, TreePine, X, Check } from "lucide-react";
+import { GraduationCap, Utensils, HeartHandshake, Wrench, TreePine, Check, ArrowRight } from "lucide-react";
+import PageHero from "../components/PageHero.jsx";
+import Reveal from "../components/Reveal.jsx";
 
 // EDIT HERE: text, photos and key points for each programme.
 const programmes = [
   {
-    id: "fees", Icon: GraduationCap, title: "Fee support for needy students",
+    id: "fees", Icon: GraduationCap, title: "Fee support for needy students", nav: "Fee support",
     image: "/images/partner-cheque.jpg", pos: "50% 40%", alt: "Partners presenting a contribution to AEDT",
     short: "Member contributions and partner gifts pay school fees for students who cannot afford them.",
     about: "Fee support keeps students in class when money runs out. It is paid for by member contributions and partner gifts.",
     points: [
       "Eligibility rules and the application process will be published here.",
       "Every award is reviewed by the committee.",
-            "Funded by members' monthly contributions and partner gifts.",
+      "Funded by members' monthly contributions and partner gifts.",
     ],
   },
   {
-    id: "meals", Icon: Utensils, title: "Student meal support",
+    id: "meals", Icon: Utensils, title: "Student meal support", nav: "Meals",
     image: "/images/meal-support.jpg", pos: "50% 50%", alt: "Students at a meal support event",
     short: "Meal vouchers so needy students can eat every day and stay focused on their studies.",
     about: "AEDT provides interest-free study loans and partial scholarships, but many extremely needy students still struggle to afford daily meals. That affects their health, concentration and results.",
@@ -28,7 +29,7 @@ const programmes = [
     ],
   },
   {
-    id: "mentorship", Icon: HeartHandshake, title: "Mentorship",
+    id: "mentorship", Icon: HeartHandshake, title: "Mentorship", nav: "Mentorship",
     image: "/images/mentorship-tree.jpg", pos: "50% 45%", alt: "A mentor speaking to students under a tree",
     short: "Graduates and professionals guide students on studies, careers and personal growth.",
     about: "Mentors visit schools and meet students in person, and are matched with younger members for ongoing guidance.",
@@ -37,9 +38,10 @@ const programmes = [
       "Career guidance, leadership and personal development.",
       "Open to graduates and professionals who want to volunteer.",
     ],
+    cta: ["Become a mentor", "/volunteer"],
   },
   {
-    id: "skills", Icon: Wrench, title: "Skills development",
+    id: "skills", Icon: Wrench, title: "Skills development", nav: "Skills",
     image: "/images/mentorship-hall.jpg", pos: "50% 50%", alt: "Students at an open-air session",
     short: "Training in digital skills, CVs, interviews and starting a business.",
     about: "Skills development helps members move from study to work.",
@@ -48,9 +50,10 @@ const programmes = [
       "CV writing and interview preparation.",
       "Jobs and internship leads shared with members.",
     ],
+    cta: ["Find an internship or attachment", "/opportunities"],
   },
   {
-    id: "community", Icon: TreePine, title: "Community service",
+    id: "community", Icon: TreePine, title: "Community service", nav: "Community service",
     image: "/images/community-service.jpg", pos: "50% 50%", alt: "Beneficiaries taking part in a community activity",
     short: "Visits to children's homes, tree planting, clean-ups and mosque cleaning.",
     about: "Our beneficiaries give back to the communities that supported them.",
@@ -60,89 +63,70 @@ const programmes = [
       "Neighbourhood and mosque clean-ups.",
       "Every member is invited to take part.",
     ],
+    cta: ["Volunteer with us", "/volunteer"],
   },
 ];
 
+const jump = (id) => (e) => {
+  e.preventDefault();
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  history.replaceState(null, "", "#" + id);
+};
+
 export default function Programmes() {
-  const [open, setOpen] = useState(null);
-  const closeRef = useRef(null);
-  const trigger = useRef(null);
-
-  useEffect(() => {
-    if (!open) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    const onKey = (e) => { if (e.key === "Escape") setOpen(null); };
-    window.addEventListener("keydown", onKey);
-    closeRef.current?.focus();
-    return () => {
-      document.body.style.overflow = prev;
-      window.removeEventListener("keydown", onKey);
-      trigger.current?.focus();
-    };
-  }, [open]);
-
-  const show = (p, e) => { trigger.current = e.currentTarget; setOpen(p); };
-
   return (
-    <>
-      <section className="pagehead" style={{ backgroundImage: "url(/images/mentorship-hall.jpg)" }}>
-        <div className="wrap">
-          <h1>Our programmes</h1>
-          <p>Everything we do is paid for and powered by our members.</p>
-        </div>
-      </section>
+    <div className="px" data-own-motion>
+      <PageHero kicker="Our programmes" title="Everything we do is powered by our members." hl="powered by our members."
+        text="Five programmes, one purpose: keep students learning and help members grow." image="/images/mentorship-hall.jpg" />
 
-      <section className="section sand">
+      <nav className="px-subnav" aria-label="Programmes on this page">
         <div className="wrap">
-          <div className="pc-grid">
-            {programmes.map((p) => (
-              <article className="pc" key={p.id}>
-                <div className="pc-media">
-                  <div className="ph"><img src={p.image} alt={p.alt} style={{ objectPosition: p.pos }} loading="lazy" /></div>
-                  <span className="badge"><p.Icon size={24} /></span>
+          {programmes.map((p) => (
+            <a key={p.id} href={"#" + p.id} onClick={jump(p.id)}><p.Icon size={16} /> {p.nav}</a>
+          ))}
+        </div>
+      </nav>
+
+      <section className="section">
+        <div className="wrap px-progs">
+          {programmes.map((p, k) => (
+            <article className="px-prog" id={p.id} key={p.id}>
+              <Reveal className="px-prog-media">
+                <div className="px-img"><img src={p.image} alt={p.alt} style={{ objectPosition: p.pos }} loading="lazy" /></div>
+                <span className="px-badge"><p.Icon size={26} /></span>
+              </Reveal>
+              <Reveal delay={120}>
+                <span className="px-num">Programme {String(k + 1).padStart(2, "0")}</span>
+                <h2>{p.title}</h2>
+                <p className="px-short">{p.short}</p>
+                <p>{p.about}</p>
+                <ul className="px-ticks">
+                  {p.points.map((t) => <li key={t}><Check size={16} /><span>{t}</span></li>)}
+                </ul>
+                <div className="px-acts">
+                  <Link className="btn green" to={p.cta ? p.cta[1] : "/membership#join"}>{p.cta ? p.cta[0] : "Join and support this"} <ArrowRight size={17} /></Link>
+                  <Link className="btn line" to="/contact">Ask a question</Link>
                 </div>
-                <div className="tx">
-                  <h3>{p.title}</h3>
-                  <p>{p.short}</p>
-                  <button className="btn line" onClick={(e) => show(p, e)} aria-haspopup="dialog">Read more</button>
-                </div>
-              </article>
-            ))}
-          </div>
+              </Reveal>
+            </article>
+          ))}
         </div>
       </section>
 
-      <section className="cta">
+      <section className="px-band">
         <div className="wrap">
-                    <div><h2>Help us reach more students</h2><p style={{ margin: 0 }}>Your monthly contribution supports every programme above.</p></div>
-                    <div style={{ display: "flex", gap: ".8rem", flexWrap: "wrap" }}>
-            <Link className="btn" to="/membership#join">Become a member</Link>
-            <Link className="btn ghost" to="/volunteer">Mentor or volunteer</Link>
-          </div>
-        </div>
-      </section>
-
-      {open && (
-        <div className="modal" onClick={() => setOpen(null)}>
-          <div className="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" onClick={(e) => e.stopPropagation()}>
-            <button ref={closeRef} className="x-close" aria-label="Close" onClick={() => setOpen(null)}><X size={20} /></button>
-            <div className="sph"><img src={open.image} alt={open.alt} style={{ objectPosition: open.pos }} /></div>
-            <div className="body">
-              <span className="badge inline"><open.Icon size={22} /></span>
-              <h2 id="sheet-title">{open.title}</h2>
-              <p>{open.about}</p>
-              <ul className="ticks">
-                {open.points.map((t) => <li key={t}><Check size={18} /><span>{t}</span></li>)}
-              </ul>
-              <div className="acts">
-                <Link className="btn green" to="/membership#join">Join and support this</Link>
-                <Link className="btn line" to="/contact">Ask a question</Link>
-              </div>
+          <Reveal className="px-band-in">
+            <div>
+              <h2>Help us reach more students</h2>
+              <p>Your monthly contribution supports every programme above.</p>
             </div>
-          </div>
+            <div className="px-band-btns">
+              <Link className="btn" to="/membership#join">Become a member</Link>
+              <Link className="btn ghost" to="/volunteer">Mentor or volunteer</Link>
+            </div>
+          </Reveal>
         </div>
-      )}
-    </>
+      </section>
+    </div>
   );
 }

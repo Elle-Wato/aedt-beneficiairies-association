@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { updates } from "../data/content.js";
 import { Upcoming, NewsCard } from "../components/NewsBits.jsx";
 import Social from "../components/Social.jsx";
+import PageHero from "../components/PageHero.jsx";
 import { site } from "../data/site.js";
 
 export default function News() {
@@ -15,20 +16,18 @@ export default function News() {
 
   return (
     <>
-      <section className="nw-head">
-        <div className="wrap">
-          <span className="eyebrow">News and events</span>
-          <h1>What we have been up to.</h1>
-          <p className="lede">We post every event we attend on our social media. Open a story to read the full post and see more photos.</p>
-        </div>
-      </section>
+      <PageHero kicker="News and events" title="What we have been up to." hl="up to."
+        text="We post every event we attend on our social media. Open a story to read the full post and see more photos."
+        image="/images/mentorship-tree.jpg" />
 
       <section className="section nw-main">
         <div className="wrap">
           {all.length > 1 && (
             <div className="chips" role="group" aria-label="Filter stories">
               {tags.map((t) => (
-                <button key={t} className="chip" aria-pressed={tag === t} onClick={() => setTag(t)}>{t}</button>
+                <button key={t} className="chip" aria-pressed={tag === t} onClick={() => setTag(t)}>
+                  {t} <span className="nw-n">{t === "All" ? all.length : all.filter((u) => u.tag === t).length}</span>
+                </button>
               ))}
             </div>
           )}

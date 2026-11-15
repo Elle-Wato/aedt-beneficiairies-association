@@ -1,0 +1,14 @@
+/* Cookie notice, scoped under .ck */
+.ck { position: fixed; z-index: 80; left: 1.2rem; bottom: 1.2rem; width: min(420px, calc(100vw - 2.4rem)); display: flex; gap: .9rem; align-items: flex-start;
+  padding: 1.2rem 1.3rem; border-radius: 20px; background: #fff; color: var(--ink, #1B2433); border: 1px solid rgba(21, 33, 27, .08);
+  box-shadow: 0 30px 70px -25px rgba(11, 42, 27, .45); opacity: 0; transform: translateY(20px); pointer-events: none; transition: opacity .45s, transform .45s cubic-bezier(.2, .7, .2, 1); }
+.ck.on { opacity: 1; transform: none; pointer-events: auto; }
+.ck-ico { flex: none; width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: rgba(230, 180, 55, .2); color: #a77a06; }
+.ck h2 { font-size: 1.02rem; margin: .1rem 0 .35rem; }
+.ck p { margin: 0 0 1rem; font-size: .88rem; line-height: 1.55; color: var(--muted, #566074); }
+.ck p a { color: var(--green, #0F4A33); font-weight: 600; }
+.ck-row { display: flex; gap: .6rem; flex-wrap: wrap; }
+.ck-row .btn { padding: .6rem 1.1rem; font-size: .9rem; }
+.ck-alt { font: inherit; font-weight: 600; font-size: .9rem; padding: .6rem 1.1rem; border-radius: 999px; cursor: pointer; background: #fff; color: var(--green, #0F4A33); border: 1.5px solid rgba(29, 90, 59, .35); }
+.ck-alt:hover { background: #f3f7f4; }
+@media (prefers-reduced-motion: reduce) { .ck { transition: none; } }

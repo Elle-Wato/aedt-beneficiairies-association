@@ -3,11 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="AEDT Beneficiaries Association: mentorship, fee support and skills development for AEDT beneficiaries." />
     <title>AEDT Beneficiaries Association</title>
+    <meta name="description" content="AEDT Beneficiaries Association: a community of Africa Education and Development Trust beneficiaries and graduates giving back through mentorship, fee and meal support, skills development and internships." />
+
+    <!-- Apply the saved dark/light choice before the page appears (prevents a white flash) -->
+    <script>try{if(localStorage.getItem('aedt_theme')==='dark')document.documentElement.dataset.theme='dark'}catch(e){}</script>
+
+    <!-- Browser tab and phone home-screen icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon-512.png" />
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0F4A33" />
+
+    <!-- How the site looks when the link is shared on WhatsApp, Facebook, X, LinkedIn -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AEDT Beneficiaries Association" />
+    <meta property="og:title" content="AEDT Beneficiaries Association" />
+    <meta property="og:description" content="Connect. Empower. Give back. A community of AEDT beneficiaries and graduates supporting the next student." />
+    <meta property="og:image" content="/images/poster-a-new-chapter-begins.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Fonts: Plus Jakarta Sans for the site, Noto Sans Arabic for the Arabic translation -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet" />
   </head>
   <body><div id="root"></div><script type="module" src="/src/main.jsx"></script></body>
 </html>

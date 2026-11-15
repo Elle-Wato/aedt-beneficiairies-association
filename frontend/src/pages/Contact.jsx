@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { MapPin, Mail, Phone, Clock, Send, ChevronDown } from "lucide-react";
 import Social from "../components/Social.jsx";
 import { site } from "../data/site.js";
+import PageHero from "../components/PageHero.jsx";
 
 // EDIT HERE: questions and answers shown under the form.
 const faqs = [
@@ -45,13 +46,9 @@ export default function Contact() {
 
   return (
     <>
-      <section className="ct-head">
-        <div className="wrap">
-          <span className="eyebrow">Contact</span>
-          <h1>We would love to hear from you.</h1>
-          <p className="lede">Questions about joining, contributions, mentoring or partnerships? Send us a message and we will reply by email.</p>
-        </div>
-      </section>
+      <PageHero kicker="Contact" title="We would love to hear from you." hl="hear from you."
+        text="Questions about joining, contributions, mentoring or partnerships? Send us a message and we will reply by email."
+        image="/images/gathering-2.jpg" />
 
       <section className="section ct-main">
         <div className="wrap ct-grid">
