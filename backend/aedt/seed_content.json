@@ -1,0 +1,384 @@
+{
+ "campaign": [
+  {
+   "slug": "feed-a-student",
+   "data": {
+    "kind": "student",
+    "title": "Feed a Student for a Semester",
+    "status": "live",
+    "category": "Meal support",
+    "image": "/images/meal-boxes.jpg",
+    "summary": "Many needy students skip meals to stay in school. KES 3,000 gives one student daily meals for three months, so they can focus on their studies.",
+    "body": [
+     "Our target is to feed 30 students this semester. Meal vouchers are bought from restaurants at the university and given out through the Imam's office, with AEDT selecting the students and overseeing distribution.",
+     "Give for one student, or for several. Every KES 3,000 is another student who can eat and learn."
+    ],
+    "asks": [
+     "Feed one student: KES 3,000",
+     "Give any amount: it all adds up",
+     "Share this campaign on WhatsApp"
+    ],
+    "cta": [
+     "Contribute now",
+     "/contribute"
+    ],
+    "goal": 90000,
+    "unit": {
+     "amount": 3000,
+     "one": "student",
+     "many": "students",
+     "per": "meals for 3 months"
+    },
+    "mpesaRef": "937937#meals"
+   }
+  },
+  {
+   "slug": "start-her-studies",
+   "data": {
+    "kind": "student",
+    "title": "Help Her Start Her Studies",
+    "status": "live",
+    "category": "Revolving study fund",
+    "image": "/images/group-discussion.jpg",
+    "summary": "A bright student has a place at university but cannot afford to start. Together we can raise KES 70,000 to get her into class.",
+    "body": [
+     "The money goes into a revolving study fund. It pays her fees as she studies, and as it is repaid it is used again, semester after semester, until she completes.",
+     "When she graduates, the same money keeps going: it moves on to support the next student. One contribution, many futures."
+    ],
+    "asks": [
+     "Give any amount by M-Pesa",
+     "Share this campaign with friends and family",
+     "Ask your workplace to match your gift"
+    ],
+    "cta": [
+     "Contribute now",
+     "/contribute"
+    ],
+    "goal": 70000,
+    "revolving": true,
+    "mpesaRef": "937937#fees"
+   }
+  },
+  {
+   "slug": "together-we-can-do-more",
+   "data": {
+    "title": "Together, We Can Do More",
+    "status": "live",
+    "featured": true,
+    "category": "Membership drive",
+    "image": "/images/graduation-day.jpg",
+    "video": "/videos/together-we-can-do-more.mp4",
+    "poster": "/images/poster-together-we-can-do-more.jpg",
+    "summary": "We were once supported. Now it's our turn to give back. Join fellow AEDT beneficiaries and graduates to connect, empower one another and open doors for the next student.",
+    "body": [
+     "Africa Education and Development Trust has been a bridge to opportunity for thousands of students. Behind every number is a story: a dream pursued, a challenge overcome and a future made possible through education.",
+     "This campaign invites every beneficiary and graduate to keep that story going, through mentorship, skills development, volunteering, job linkages, and support for bright but financially disadvantaged students."
+    ],
+    "asks": [
+     "Register as a member for KES 500",
+     "Choose a monthly contribution you can keep up",
+     "Mentor, volunteer or share an opportunity"
+    ],
+    "cta": [
+     "Become a member",
+     "/membership#join"
+    ]
+   }
+  },
+  {
+   "slug": "a-new-chapter-begins",
+   "data": {
+    "title": "A New Chapter Begins",
+    "status": "live",
+    "category": "Digital launch",
+    "image": "/images/poster-a-new-chapter-begins.jpg",
+    "video": "/videos/a-new-chapter-begins.mp4",
+    "poster": "/images/poster-a-new-chapter-begins.jpg",
+    "summary": "The online unveiling of the AEDT Beneficiaries Association and its new digital home, ahead of the formal launch planned for January.",
+    "body": [
+     "With this unveiling, the Association is open to its community: current beneficiaries, graduates and everyone who believes in the mission."
+    ],
+    "asks": [
+     "Watch and share the launch film",
+     "Register on the website",
+     "Invite a fellow beneficiary"
+    ],
+    "cta": [
+     "Join the community",
+     "/membership#join"
+    ]
+   }
+  },
+  {
+   "slug": "keep-a-student-in-class",
+   "data": {
+    "title": "Keep a Student in Class",
+    "status": "live",
+    "category": "Fees and meals",
+    "image": "/images/seminar-classroom.jpg",
+    "summary": "Member contributions pay school fees for needy students, including orphans, and help university students facing financial difficulties get meals and other essentials.",
+    "body": [
+     "Giving back is not just about what we have. It is about what we are willing to share. Every contribution, large or small, goes towards keeping a student learning."
+    ],
+    "asks": [
+     "Give a one-off gift by M-Pesa",
+     "Increase your monthly contribution",
+     "Tell us about a student in need"
+    ],
+    "cta": [
+     "Contribute",
+     "/contribute"
+    ]
+   }
+  },
+  {
+   "slug": "formal-launch",
+   "data": {
+    "title": "Formal Launch of the Association",
+    "status": "upcoming",
+    "category": "Event",
+    "image": "/images/conference-stage.jpg",
+    "summary": "The Association's formal physical launch is planned for January. Date, venue and programme will be announced here.",
+    "body": [],
+    "asks": [
+     "Register so we can invite you",
+     "Offer to help organise",
+     "Bring a fellow beneficiary"
+    ],
+    "cta": [
+     "Get updates",
+     "/news"
+    ]
+   }
+  }
+ ],
+ "update": [
+  {
+   "data": {
+    "date": "2026-10-10",
+    "tag": "Mentorship",
+    "title": "Mentors meet secondary school students",
+    "summary": "Mentors spent the afternoon with students, talking about studies, careers and staying focused.",
+    "image": "/images/mentorship-hall.jpg",
+    "link": "https://x.com/aedt_interact/status/2075139501530243213?s=48"
+   }
+  },
+  {
+   "data": {
+    "date": "2026-09-20",
+    "tag": "Partners",
+    "title": "Partner contribution presented to AEDT",
+    "summary": "A KES 100,000 contribution was presented to support students.",
+    "image": "/images/partner-cheque.jpg",
+    "link": "https://x.com/aedt_interact/status/2075139501530243213?s=48"
+   }
+  },
+  {
+   "data": {
+    "date": "2026-09-05",
+    "tag": "Gathering",
+    "title": "Members and mentors meet",
+    "summary": "Members came together to share progress and plan the next programmes.",
+    "image": "/images/gathering-1.jpg",
+    "link": "https://x.com/aedt_interact/status/2075139501530243213?s=48"
+   }
+  }
+ ],
+ "event": [
+  {
+   "data": {
+    "date": "2026-11-21",
+    "title": "Tree planting and clean-up",
+    "place": "Venue to be confirmed",
+    "note": "Open to all members"
+   }
+  },
+  {
+   "data": {
+    "date": "2026-12-05",
+    "title": "Members' meeting",
+    "place": "Venue to be confirmed",
+    "note": "Updates on fee and meal support"
+   }
+  }
+ ],
+ "photo": [
+  {
+   "data": {
+    "src": "/images/graduates-group.jpg",
+    "category": "Graduation",
+    "alt": "Graduates in gowns with AEDT members",
+    "caption": "Celebrating our graduates"
+   }
+  },
+  {
+   "data": {
+    "src": "/images/meal-boxes.jpg",
+    "category": "Meal support",
+    "alt": "Volunteers preparing packed meals for students",
+    "caption": "Packed meals ready for students"
+   }
+  },
+  {
+   "data": {
+    "src": "/images/school-panel-visit.jpg",
+    "category": "Mentorship",
+    "alt": "Mentors speaking to secondary school students in a classroom",
+    "caption": "Mentors visit a secondary school"
+   }
+  },
+  {
+   "data": {
+    "src": "/images/peer-discussion-outdoor.jpg",
+    "category": "Mentorship",
+    "alt": "Students in an outdoor group discussion",
+    "caption": "Outdoor peer discussion with students"
+   }
+  },
+  {
+   "data": {
+    "src": "/images/outreach-school-hall.jpg",
+    "category": "Mentorship",
+    "alt": "Students seated in a large school hall",
+    "caption": "School outreach session"
+   }
+  },
+  {
+   "data": {
+    "src": "/images/workshop-boardroom.jpg",
+    "category": "Skills",
+    "alt": "Members at a boardroom training session",
+    "caption": "Skills and career workshop"
+   }
+  },
+  {
+   "data": {
+    "src": "/images/seminar-classroom.jpg",
+    "category": "Skills",
+    "alt": "Students taking notes during a seminar",
+    "caption": "Seminar for students"
+   }
+  },
+  {
+   "data": {
+    "src": "/images/forum-auditorium.jpg",
+    "category": "Events",
+    "alt": "Students seated in an auditorium",
+    "caption": "Students' forum in the auditorium"
+   }
+  },
+  {
+   "data": {
+    "src": "/images/conference-crowd.jpg",
+    "category": "Events",
+    "alt": "A full hall of students at a conference",
+    "caption": "A full hall at the students' conference"
+   }
+  },
+  {
+   "data": {
+    "src": "/images/conference-stage.jpg",
+    "category": "Events",
+    "alt": "Audience facing the stage at a conference",
+    "caption": "Conference main session"
+   }
+  },
+  {
+   "data": {
+    "src": "/images/iftar-dinner.jpg",
+    "category": "Gatherings",
+    "alt": "Members seated at a long dinner table",
+    "caption": "Members' dinner gathering"
+   }
+  },
+  {
+   "data": {
+    "src": "/images/volunteers-info-desk.jpg",
+    "category": "Volunteering",
+    "alt": "Volunteers in reflective vests at an information desk",
+    "caption": "Volunteers at the information desk"
+   }
+  },
+  {
+   "data": {
+    "src": "/images/tree-planting.jpg",
+    "category": "Community service",
+    "alt": "Members planting a tree seedling",
+    "caption": "Tree planting"
+   }
+  },
+  {
+   "data": {
+    "src": "/images/cleanup-field.jpg",
+    "category": "Community service",
+    "alt": "Volunteers collecting litter in a field",
+    "caption": "Community clean-up"
+   }
+  },
+  {
+   "data": {
+    "src": "/images/cleanup-volunteer.jpg",
+    "category": "Community service",
+    "alt": "A volunteer picking up litter by a hedge",
+    "caption": "Clean-up along the road"
+   }
+  },
+  {
+   "data": {
+    "src": "/images/cleanup-gloves.jpg",
+    "category": "Community service",
+    "alt": "Volunteers with gloves and a rubbish bag",
+    "caption": "Gloves on, bags ready"
+   }
+  },
+  {
+   "data": {
+    "src": "/images/mentorship-tree.jpg",
+    "category": "Mentorship",
+    "alt": "",
+    "caption": "Mentorship session under the acacia"
+   }
+  },
+  {
+   "data": {
+    "src": "/images/mentorship-hall.jpg",
+    "category": "Mentorship",
+    "alt": "",
+    "caption": "Open-air session with secondary school students"
+   }
+  },
+  {
+   "data": {
+    "src": "/images/girls-session.jpg",
+    "category": "Mentorship",
+    "alt": "",
+    "caption": "Girls' mentorship and support session"
+   }
+  },
+  {
+   "data": {
+    "src": "/images/gathering-1.jpg",
+    "category": "Gatherings",
+    "alt": "",
+    "caption": "Members' mentorship gathering"
+   }
+  },
+  {
+   "data": {
+    "src": "/images/community-service.jpg",
+    "category": "Gatherings",
+    "alt": "",
+    "caption": "Guests and elders addressing the gathering"
+   }
+  },
+  {
+   "data": {
+    "src": "/images/partner-cheque.jpg",
+    "category": "Partners",
+    "alt": "",
+    "caption": "A KES 100,000 contribution presented to AEDT"
+   }
+  }
+ ],
+ "opportunity": []
+}

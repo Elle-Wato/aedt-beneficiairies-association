@@ -1,9 +1,11 @@
-import { Routes, Route } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import CookieBanner from "./components/CookieBanner.jsx";
 import ScrollEffects from "./components/ScrollEffects.jsx";
 import WhatsAppButton from "./components/WhatsAppButton.jsx";
+import { LiveDataProvider } from "./data/live.jsx";
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
 import Programmes from "./pages/Programmes.jsx";
@@ -18,9 +20,20 @@ import Gallery from "./pages/Gallery.jsx";
 import { Privacy, Cookies } from "./pages/Legal.jsx";
 import NotFound from "./pages/NotFound.jsx";
 
+// The staff dashboard loads only when someone opens /staff, so it adds nothing to the public pages.
+const Staff = lazy(() => import("./staff/StaffApp.jsx"));
+
 export default function App() {
+  const { pathname } = useLocation();
+  if (pathname === "/staff" || pathname.startsWith("/staff/")) {
+    return (
+      <Suspense fallback={<div style={{ padding: "3rem", textAlign: "center" }}>Loading the staff dashboard...</div>}>
+        <Routes><Route path="/staff/*" element={<Staff />} /></Routes>
+      </Suspense>
+    );
+  }
   return (
-    <>
+    <LiveDataProvider>
       {/* ScrollEffects handles scroll-to-top on page change, #section links and the reveal animations */}
       <ScrollEffects />
       <a className="skip" href="#main">Skip to content</a>
@@ -46,6 +59,6 @@ export default function App() {
       <Footer />
       <WhatsAppButton />
       <CookieBanner />
-    </>
+    </LiveDataProvider>
   );
 }
