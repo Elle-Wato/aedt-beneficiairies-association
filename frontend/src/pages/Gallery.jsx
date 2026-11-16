@@ -31,7 +31,7 @@ export default function Gallery() {
   return (
     <div className="px" data-own-motion>
       <PageHero kicker="Gallery" title="Moments that matter." hl="matter."
-        text="Moments from our mentorship sessions, gatherings and partnerships." image="/images/gathering-1.jpg" />
+        text="Moments from our mentorship sessions, gatherings and partnerships." image="/images/tree-planting.jpg" />
 
       <section className="section">
         <div className="wrap">

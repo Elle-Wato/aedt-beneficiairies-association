@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { Wallet, UserPlus, CalendarHeart, Gift, Copy, Check, Smartphone, GraduationCap, Utensils, HeartHandshake, Wrench, TreePine, ArrowRight, Phone, Mail, ChevronDown } from "lucide-react";
+import { Wallet, UserPlus, CalendarHeart, Gift, Copy, Check, Smartphone, Landmark, GraduationCap, Utensils, HeartHandshake, Wrench, TreePine, ArrowRight, Phone, Mail, ChevronDown } from "lucide-react";
 import { site } from "../data/site.js";
 import "../styles/contribute.css";
 
@@ -48,11 +48,58 @@ const uses = [
 
 // EDIT HERE: questions and answers
 const faqs = [
+  ["Which M-Pesa account number should I use?", `Use Pay Bill ${site.mpesa.paybill}. For the account number, enter ${site.mpesa.accounts.map((x) => `${x.ref} for ${x.label.toLowerCase()}`).join(", or ")}.`],
   ["Is the KES 500 registration a one-time payment?", "Yes. You pay it once when you join, then choose your own monthly contribution."],
   ["How much should I give each month?", "It is up to you. Members choose an amount they can keep up, and every amount counts."],
   ["Can I give if I am not an AEDT beneficiary?", "Yes. Anyone who believes in the mission can give a one-off gift to a campaign or programme."],
   ["I have a question about a payment. Who do I contact?", `Email ${site.email} or call ${site.phone}, ${site.hours.toLowerCase()}.`],
 ];
+
+function PayCard() {
+  const m = site.mpesa;
+  const b = site.bank;
+  const [tab, setTab] = useState("mpesa");
+  const [acc, setAcc] = useState(0);
+  const a = m.accounts[acc] || m.accounts[0];
+  return (
+    <div className="gv-paycard" id="pay">
+      {b && (
+        <div className="gv-tabs" role="tablist" aria-label="Payment method">
+          <button role="tab" aria-selected={tab === "mpesa"} className={tab === "mpesa" ? "on" : ""} onClick={() => setTab("mpesa")}><Smartphone size={16} /> M-Pesa</button>
+          <button role="tab" aria-selected={tab === "bank"} className={tab === "bank" ? "on" : ""} onClick={() => setTab("bank")}><Landmark size={16} /> Bank transfer</button>
+        </div>
+      )}
+      {tab === "mpesa" ? (
+        <div role="tabpanel">
+          <div className="gv-paycard-head"><Smartphone size={20} /> Lipa na M-Pesa · Pay Bill</div>
+          <CopyValue label="Business number" value={m.paybill} />
+          <div className="gv-for">
+            <span>What is your contribution for?</span>
+            <div className="gv-for-opts" role="radiogroup" aria-label="Contribution purpose">
+              {m.accounts.map((x, k) => (
+                <button key={x.ref} type="button" role="radio" aria-checked={k === acc} className={k === acc ? "on" : ""} onClick={() => setAcc(k)}>{x.label}</button>
+              ))}
+            </div>
+            {a.note && <small>{a.note}</small>}
+          </div>
+          <CopyValue label="Account number" value={a.ref} />
+          <div className="gv-pay-row"><span>Account name</span><b className="sm notranslate" translate="no">{m.accountName}</b></div>
+          <div className="gv-pay-row"><span>Registration</span><b>{m.registration}</b></div>
+        </div>
+      ) : (
+        <div role="tabpanel">
+          <div className="gv-paycard-head bank"><Landmark size={20} /> Bank transfer</div>
+          <div className="gv-pay-row"><span>Bank</span><b className="sm notranslate" translate="no">{b.name}</b></div>
+          <div className="gv-pay-row"><span>Account name</span><b className="sm notranslate" translate="no">{b.accountName}</b></div>
+          <CopyValue label="Account number" value={b.accountNumber} />
+          <div className="gv-pay-row"><span>Branch</span><b className="sm notranslate" translate="no">{b.branch}</b></div>
+          <div className="gv-pay-row"><span>Currency</span><b className="sm">{b.currency}</b></div>
+          <p className="gv-pay-note">Please use your name as the payment reference so we can match your contribution.</p>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Contribute() {
   const m = site.mpesa;
@@ -72,15 +119,7 @@ export default function Contribute() {
             </div>
           </div>
           <Reveal className="gv-paycard-wrap" delay={150}>
-            <div className="gv-paycard notranslate-values" id="pay">
-              <div className="gv-paycard-head"><Smartphone size={20} /> Pay with M-Pesa</div>
-              <CopyValue label="Paybill number" value={m.paybill} />
-              <CopyValue label="Account" value={m.account} />
-              <div className="gv-pay-row"><span>Registration</span><b>{m.registration}</b></div>
-              {(!m.paybill || !m.account) && (
-                <p className="gv-pay-note">Payment details will appear here shortly. Meanwhile, contact us and we will guide you.</p>
-              )}
-            </div>
+            <PayCard />
           </Reveal>
         </div>
       </section>
@@ -114,11 +153,14 @@ export default function Contribute() {
             <span className="eyebrow">How to pay</span>
             <h2>Give in under a minute.</h2>
             <p className="lede">Use M-Pesa on your phone. Keep the confirmation message for your records.</p>
+            {site.bank && (
+              <p className="gv-bankline"><Landmark size={18} /><span>Prefer the bank? Pay to <b className="notranslate" translate="no">{site.bank.name}</b>, account <b className="notranslate" translate="no">{site.bank.accountNumber}</b> (<span className="notranslate" translate="no">{site.bank.accountName}</span>, {site.bank.branch} branch).</span></p>
+            )}
           </Reveal>
           <ol className="gv-steps">
             {[
               ["Open M-Pesa", "Go to Lipa na M-Pesa, then Pay Bill."],
-              ["Enter the details", <>Business number <b>{m.paybill || "to be confirmed"}</b>, account <b>{m.account || "to be confirmed"}</b>.</>],
+              ["Enter the details", <>Business number <b className="notranslate" translate="no">{m.paybill}</b>. Account number <b className="notranslate" translate="no">{m.accounts.map((x) => x.ref).join(" or ")}</b> ({m.accounts.map((x) => x.label.toLowerCase()).join(" or ")}).</>],
               ["Enter the amount", "Your registration, monthly contribution or gift."],
               ["Confirm with your PIN", "You will get an M-Pesa confirmation message."],
             ].map(([t, d], k) => (

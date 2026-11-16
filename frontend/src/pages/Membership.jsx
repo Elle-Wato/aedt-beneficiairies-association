@@ -43,7 +43,7 @@ export default function Membership() {
   return (
     <div className="px" data-own-motion>
       <PageHero kicker="Membership" title="Join the Association." hl="Association."
-        text="Membership is voluntary and open to AEDT beneficiaries and graduates." image="/images/gathering-1.jpg">
+        text="Membership is voluntary and open to AEDT beneficiaries and graduates." image="/images/iftar-dinner.jpg">
         <div className="px-ticket" aria-label="Membership contributions">
           <div><b>KES 500</b><span>registration, paid once</span></div>
           <div><b>You choose</b><span>monthly contribution</span></div>

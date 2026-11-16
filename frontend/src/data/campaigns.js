@@ -11,6 +11,9 @@
 //           a first name or initials is enough.
 // revolving: true shows the "how your money keeps working" explanation.
 // mpesaRef: optional account reference donors should use for this campaign, e.g. "STUDY1".
+// unit:     optional cost of helping one person, e.g. { amount: 3000, one: "student", many: "students", per: "meals for 3 months" }.
+//           Shows how many people the money raised so far covers, a row of figures, and a quick "how many can you feed?" picker.
+//           Tip: make goal a multiple of unit.amount (e.g. 30 students x 3,000 = 90,000).
 // video:    optional MP4 in /public/videos. poster is the still shown before it plays.
 // featured: the campaign shown at the top of /campaigns and on the homepage (use one).
 //
@@ -18,6 +21,29 @@
 // wording before publishing.
 
 export const campaigns = [
+  {
+    slug: "feed-a-student",
+    kind: "student",
+    title: "Feed a Student for a Semester",
+    status: "live",
+    category: "Meal support",
+    start: null,
+    end: null,
+    image: "/images/meal-boxes.jpg",
+    summary:
+      "Many needy students skip meals to stay in school. KES 3,000 gives one student daily meals for three months, so they can focus on their studies.",
+    body: [
+      "Our target is to feed 30 students this semester. Meal vouchers are bought from restaurants at the university and given out through the Imam's office, with AEDT selecting the students and overseeing distribution.",
+      "Give for one student, or for several. Every KES 3,000 is another student who can eat and learn.",
+    ],
+    asks: ["Feed one student: KES 3,000", "Give any amount: it all adds up", "Share this campaign on WhatsApp"],
+    cta: ["Contribute now", "/contribute"],
+    goal: 90000,            // 30 students x KES 3,000
+    raised: 0,              // UPDATE as money comes in
+    supporters: null,
+    unit: { amount: 3000, one: "student", many: "students", per: "meals for 3 months" },
+    mpesaRef: "937937#meals",
+  },
   {
     slug: "start-her-studies",
     kind: "student",
@@ -37,10 +63,10 @@ export const campaigns = [
     asks: ["Give any amount by M-Pesa", "Share this campaign with friends and family", "Ask your workplace to match your gift"],
     cta: ["Contribute now", "/contribute"],
     goal: 70000,
-    raised: 20000,              // UPDATE as money comes in, e.g. 50000
+    raised: 0,              // UPDATE as money comes in, e.g. 50000
     supporters: null,       // e.g. 23
     revolving: true,
-    mpesaRef: "",
+    mpesaRef: "937937#fees",   // Pay Bill 630640, this account number
   },
   {
     slug: "together-we-can-do-more",
@@ -95,7 +121,7 @@ export const campaigns = [
     category: "Fees and meals",
     start: null,
     end: null,
-    image: "/images/smart-volunteers-meals.jpg",
+    image: "/images/seminar-classroom.jpg",
     summary:
       "Member contributions pay school fees for needy students, including orphans, and help university students facing financial difficulties get meals and other essentials.",
     body: [
@@ -113,7 +139,7 @@ export const campaigns = [
     category: "Event",
     start: null,
     end: null,
-    image: "/images/school-outreach.jpg",
+    image: "/images/conference-stage.jpg",
     summary:
       "The Association's formal physical launch is planned for January. Date, venue and programme will be announced here.",
     body: [],

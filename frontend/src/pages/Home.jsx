@@ -10,14 +10,15 @@ import { featuredCampaign, campaigns } from "../data/campaigns.js";
 import "../styles/home.css";
 
 // EDIT HERE: the rotating hero slides. a and b are [button text, link]. hl is the part of the
-// title shown in gold.
+// title shown in gold. video (optional) plays silently behind the slide; img is shown while it
+// loads and for visitors who turn off motion.
 const slides = [
-  { img: "/images/mentorship-hall.jpg", pos: "50% 40%", tag: "Beneficiaries giving back",
+  { img: "/images/hero-loop-poster.jpg", video: "/videos/hero-loop.mp4", pos: "50% 40%", tag: "Beneficiaries giving back",
     title: "Helping each other through school, and beyond.", hl: "and beyond.",
     text: "We are AEDT beneficiaries who pay fees for needy students, mentor each other and build skills that lead to work.",
     a: ["Become a member", "/membership#join"], b: ["See our programmes", "/programmes"],
     note: "Join for KES 500, then give what you can each month." },
-  { img: "/images/mentorship-tree.jpg", pos: "50% 45%", tag: "Mentorship",
+  { img: "/images/peer-discussion-outdoor.jpg", pos: "50% 45%", tag: "Mentorship",
     title: "Mentors who come back to guide the next student.", hl: "the next student.",
     text: "Graduates and professionals visit schools and sit with students to talk about studies, careers and life.",
     a: ["Mentor or volunteer", "/volunteer"], b: ["How mentorship works", "/programmes"] },
@@ -29,7 +30,7 @@ const slides = [
 const SLIDE_MS = 7000;
 
 const routes = [
-  [UserPlus, "Join us", "Become a member", "Register for KES 500 and choose your monthly contribution.", "/membership#join", "Become a member"],
+  [UserPlus, "Join us", "Become a member", "Register for KES 500 and choose your monthly contribution.", "/membership#join", "Join now"],
   [Wallet, "Give", "Contribute", "Pay your registration, monthly contribution or a gift by M-Pesa.", "/contribute", "Make a contribution"],
   [HeartHandshake, "Give your time", "Mentor or volunteer", "Share your skills with students, or join community activities.", "/volunteer", "Sign up"],
   [GraduationCap, "Find out more", "Our programmes", "Fee support, meals, mentorship, skills and community service.", "/programmes", "View programmes"],
@@ -45,10 +46,10 @@ const stats = [
 
 const progs = [
   [GraduationCap, "/images/partner-cheque.jpg", "50% 40%", "Fee support", "Keeps needy students in class when money runs out."],
-  [Utensils, "/images/meal-support.jpg", "50% 50%", "Meal support", "Meal vouchers so students can eat and focus."],
-  [HeartHandshake, "/images/mentorship-tree.jpg", "50% 45%", "Mentorship", "Graduates guiding students on studies and careers."],
-  [Wrench, "/images/mentorship-hall.jpg", "50% 50%", "Skills development", "Digital skills, CVs, interviews and business."],
-  [TreePine, "/images/community-service.jpg", "50% 50%", "Community service", "Children's homes, tree planting and clean-ups."],
+  [Utensils, "/images/meal-boxes.jpg", "50% 55%", "Meal support", "Meal vouchers so students can eat and focus."],
+  [HeartHandshake, "/images/school-panel-visit.jpg", "50% 50%", "Mentorship", "Graduates guiding students on studies and careers."],
+  [Wrench, "/images/workshop-boardroom.jpg", "50% 45%", "Skills development", "Digital skills, CVs, interviews and business."],
+  [TreePine, "/images/tree-planting.jpg", "50% 55%", "Community service", "Children's homes, tree planting and clean-ups."],
 ];
 
 const steps = [
@@ -132,7 +133,11 @@ function Hero() {
         const on = k === i;
         return (
           <div key={s.title} className={"h-slide" + (on ? " on" : "")} aria-hidden={!on}>
-            <div className="h-bg" style={{ backgroundImage: `url(${s.img})`, backgroundPosition: s.pos }} />
+            <div className="h-bg" style={{ backgroundImage: `url(${s.img})`, backgroundPosition: s.pos }}>
+              {s.video && on && !reduced() && (
+                <video className="h-bgvid" src={s.video} poster={s.img} autoPlay muted loop playsInline preload="auto" aria-hidden="true" tabIndex={-1} />
+              )}
+            </div>
             <div className="wrap h-copy">
               <span className="h-tag"><Sparkles size={14} /> {s.tag}</span>
               <h2 className="h-title"><Title text={s.title} hl={s.hl} /></h2>
@@ -188,16 +193,16 @@ function SponsorMini() {
   return (
     <Link to={`/campaigns#${c.slug}`} className="h-spon" ref={ref}>
       <div className="h-spon-top">
-        <span><GraduationCap size={16} /> Sponsor a student</span>
+        <span><GraduationCap size={16} /> {c.category}</span>
         <b>{pct}%</b>
       </div>
       <h3>{c.title}</h3>
       <div className="h-spon-bar"><i style={{ width: seen ? `${pct}%` : 0 }} /></div>
       <div className="h-spon-txt">
-        <span><b>{kes(c.raised)}</b> of {kes(c.goal)}</span>
+        <span><b>{kes(c.raised)}</b> of {kes(c.goal)}{c.unit ? ` · ${Math.floor(c.raised / c.unit.amount)} of ${Math.floor(c.goal / c.unit.amount)} ${c.unit.many}` : ""}</span>
         <span>{left > 0 ? `${kes(left)} to go` : "Fully funded"}</span>
       </div>
-      <span className="h-spon-go">Support her <ArrowRight size={16} /></span>
+      <span className="h-spon-go">Give now <ArrowRight size={16} /></span>
     </Link>
   );
 }
@@ -270,8 +275,8 @@ export default function Home() {
       <section className="section">
         <div className="wrap h-abt">
           <Reveal className="h-abt-media">
-            <img className="h-abt-main" src="/images/gathering-1.jpg" alt="Members and mentors seated together at a gathering" style={{ objectPosition: "30% 60%" }} loading="lazy" />
-            <img className="h-abt-small" src="/images/mentorship-tree.jpg" alt="" loading="lazy" />
+            <img className="h-abt-main" src="/images/graduates-group.jpg" alt="AEDT beneficiaries in graduation gowns with members" style={{ objectPosition: "50% 45%" }} loading="lazy" />
+            <img className="h-abt-small" src="/images/cleanup-field.jpg" alt="" loading="lazy" />
             <div className="h-abt-badge"><b>Led by beneficiaries</b><span>Africa Education and Development Trust alumni</span></div>
           </Reveal>
           <Reveal delay={120}>

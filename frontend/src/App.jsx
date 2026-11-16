@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import CookieBanner from "./components/CookieBanner.jsx";
 import ScrollEffects from "./components/ScrollEffects.jsx";
+import WhatsAppButton from "./components/WhatsAppButton.jsx";
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
 import Programmes from "./pages/Programmes.jsx";
@@ -15,6 +16,7 @@ import Volunteer from "./pages/Volunteer.jsx";
 import Opportunities from "./pages/Opportunities.jsx";
 import Gallery from "./pages/Gallery.jsx";
 import { Privacy, Cookies } from "./pages/Legal.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 export default function App() {
   return (
@@ -38,10 +40,11 @@ export default function App() {
           <Route path="/opportunities" element={<Opportunities />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/cookies" element={<Cookies />} />
-          <Route path="*" element={<section className="wrap page"><h1>Page not found</h1><p>Use the menu to find what you need.</p></section>} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
+      <WhatsAppButton />
       <CookieBanner />
     </>
   );

@@ -30,7 +30,7 @@ const programmes = [
   },
   {
     id: "mentorship", Icon: HeartHandshake, title: "Mentorship", nav: "Mentorship",
-    image: "/images/mentorship-tree.jpg", pos: "50% 45%", alt: "A mentor speaking to students under a tree",
+    image: "/images/outreach-school-hall.jpg", pos: "50% 55%", alt: "Students listening to mentors at a school session",
     short: "Graduates and professionals guide students on studies, careers and personal growth.",
     about: "Mentors visit schools and meet students in person, and are matched with younger members for ongoing guidance.",
     points: [
@@ -42,7 +42,7 @@ const programmes = [
   },
   {
     id: "skills", Icon: Wrench, title: "Skills development", nav: "Skills",
-    image: "/images/mentorship-hall.jpg", pos: "50% 50%", alt: "Students at an open-air session",
+    image: "/images/seminar-classroom.jpg", pos: "50% 50%", alt: "Students taking notes at a skills seminar",
     short: "Training in digital skills, CVs, interviews and starting a business.",
     about: "Skills development helps members move from study to work.",
     points: [
@@ -54,7 +54,7 @@ const programmes = [
   },
   {
     id: "community", Icon: TreePine, title: "Community service", nav: "Community service",
-    image: "/images/community-service.jpg", pos: "50% 50%", alt: "Beneficiaries taking part in a community activity",
+    image: "/images/cleanup-volunteer.jpg", pos: "50% 45%", alt: "A volunteer collecting litter during a clean-up",
     short: "Visits to children's homes, tree planting, clean-ups and mosque cleaning.",
     about: "Our beneficiaries give back to the communities that supported them.",
     points: [
@@ -77,7 +77,7 @@ export default function Programmes() {
   return (
     <div className="px" data-own-motion>
       <PageHero kicker="Our programmes" title="Everything we do is powered by our members." hl="powered by our members."
-        text="Five programmes, one purpose: keep students learning and help members grow." image="/images/mentorship-hall.jpg" />
+        text="Five programmes, one purpose: keep students learning and help members grow." image="/images/conference-crowd.jpg" />
 
       <nav className="px-subnav" aria-label="Programmes on this page">
         <div className="wrap">

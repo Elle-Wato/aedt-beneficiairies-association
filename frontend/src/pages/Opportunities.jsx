@@ -49,7 +49,7 @@ export default function Opportunities() {
     <div className="px" data-own-motion>
       <PageHero kicker="Internships and attachments" title="Find your placement. We will help open the door." hl="We will help open the door."
         text="Apply with us for an internship, industrial attachment or first job. We connect students and graduates with our partner companies and organisations."
-        image="/images/group-discussion.jpg">
+        image="/images/workshop-boardroom.jpg">
         <div className="px-hero-actions">
           <a className="btn" href="#apply" onClick={(e) => { e.preventDefault(); scrollTo("apply"); }}>Apply now <ArrowRight size={17} /></a>
           <a className="btn ghost" href="#openings" onClick={(e) => { e.preventDefault(); scrollTo("openings"); }}>See open placements</a>

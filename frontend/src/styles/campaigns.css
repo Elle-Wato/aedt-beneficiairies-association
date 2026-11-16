@@ -180,3 +180,28 @@
   .cp-prog-stats { grid-template-columns: 1fr 1fr; }
   .cp-prog-stats div:last-child:nth-child(odd) { grid-column: span 2; }
 }
+
+/* students covered: figures and picker */
+.cp-prog-stats div.unit b { color: var(--cp-green); }
+.cp-units { display: flex; flex-wrap: wrap; gap: .35rem; margin: -.2rem 0 1.3rem; }
+.cp-units span { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 9px; background: #EEF2EF; color: #B8C6BE; transition: background .4s, color .4s; }
+.cp-units span.on { background: var(--cp-green); color: var(--cp-gold); }
+.cp-pick { margin: 1.4rem 0 1.6rem; padding: 1.3rem 1.4rem; border-radius: 20px; border: 1.5px dashed #D6E3DB; }
+.cp-pick h3 { display: flex; align-items: center; gap: .5rem; font-size: 1rem !important; margin: 0 0 .9rem !important; }
+.cp-pick h3 svg { color: var(--cp-gold); }
+.cp-pick-opts { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem; }
+.cp-pick-opts button { display: grid; place-items: center; padding: .7rem .3rem; border-radius: 14px; border: 1.5px solid #D5DED9; background: #fff; font: inherit; cursor: pointer; transition: all .2s; color: var(--cp-ink); }
+.cp-pick-opts button b { font-size: 1.4rem; line-height: 1.1; }
+.cp-pick-opts button small { font-size: .78rem; color: var(--cp-muted); }
+.cp-pick-opts button.on { background: var(--cp-green); border-color: var(--cp-green); color: #fff; }
+.cp-pick-opts button.on small { color: rgba(255, 255, 255, .8); }
+.cp-pick-res { margin: 1rem 0 0; line-height: 1.6; color: var(--cp-ink); }
+.cp-pick-res > b:first-child { font-size: 1.25rem; color: var(--cp-green); }
+html[data-theme="dark"] .cp-units span { background: #1A2C24; color: #3E5A4C; }
+html[data-theme="dark"] .cp-units span.on { background: #1B6B48; color: var(--gold, #D9A92F); }
+html[data-theme="dark"] .cp-pick { border-color: #2C4036; }
+html[data-theme="dark"] .cp-pick-opts button { background: var(--d-card2, #182A22); border-color: #3A5045; color: var(--ink); }
+html[data-theme="dark"] .cp-pick-opts button.on { background: #1B6B48; border-color: #1B6B48; color: #fff; }
+html[data-theme="dark"] .cp-pick-res > b:first-child, html[data-theme="dark"] .cp-prog-stats div.unit b { color: var(--d-acc, #7DD3A7); }
+@media (max-width: 480px) { .cp-units span { width: 26px; height: 26px; } }
+.cp-prog-stats:has(> div:nth-child(4)) { grid-template-columns: 1fr 1fr; }

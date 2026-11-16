@@ -40,7 +40,7 @@ export default function Volunteer() {
   return (
     <div className="px" data-own-motion>
       <PageHero kicker="Get involved" title="Mentor or volunteer with us." hl="volunteer with us."
-        text="Give your time and skills. You do not need to be a paying member to sign up." image="/images/mentorship-hall.jpg">
+        text="Give your time and skills. You do not need to be a paying member to sign up." image="/images/volunteers-info-desk.jpg">
         <div className="px-hero-actions">
           <a className="btn" href="#signup" onClick={(e) => { e.preventDefault(); document.getElementById("signup")?.scrollIntoView({ behavior: "smooth" }); }}>Sign up now <ArrowRight size={17} /></a>
           <Link className="btn ghost" to="/programmes#mentorship">How mentorship works</Link>

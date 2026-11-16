@@ -18,7 +18,7 @@ export default function News() {
     <>
       <PageHero kicker="News and events" title="What we have been up to." hl="up to."
         text="We post every event we attend on our social media. Open a story to read the full post and see more photos."
-        image="/images/mentorship-tree.jpg" />
+        image="/images/forum-auditorium.jpg" />
 
       <section className="section nw-main">
         <div className="wrap">

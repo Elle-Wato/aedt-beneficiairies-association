@@ -1,13 +1,15 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { Megaphone, CalendarDays, Share2, Check, ArrowRight, UserPlus, Wallet, HeartHandshake, Link2, GraduationCap, RefreshCw, Users, Target, BookOpen } from "lucide-react";
+import { Megaphone, CalendarDays, Share2, Check, ArrowRight, UserPlus, Wallet, HeartHandshake, Link2, GraduationCap, RefreshCw, Users, Target, BookOpen, Utensils, User } from "lucide-react";
 import { campaigns, statusLabel, featuredCampaign } from "../data/campaigns.js";
+import { site } from "../data/site.js";
 import { longDate } from "../data/content.js";
 import "../styles/campaigns.css";
 
 const FILTERS = [["all", "All"], ["live", "Live now"], ["upcoming", "Coming up"], ["completed", "Completed"]];
 
 const kes = (n) => "KES " + Number(n).toLocaleString("en-US");
+const cap = (t) => t.charAt(0).toUpperCase() + t.slice(1);
 const when = (c) => {
   if (!c.start && !c.end) return "Date to be confirmed";
   if (c.start && c.end) return `${longDate(c.start)} – ${longDate(c.end)}`;
@@ -66,6 +68,7 @@ export function Progress({ c, size = "sm" }) {
           <div><Target size={16} /><span>Target</span><b>{kes(goal)}</b></div>
           <div><Wallet size={16} /><span>Raised</span><b>{kes(raised)}</b></div>
           <div className={done ? "ok" : ""}><GraduationCap size={16} /><span>{done ? "Status" : "Still needed"}</span><b>{done ? "Fully funded" : kes(left)}</b></div>
+          {c.unit && <div className="unit"><Utensils size={16} /><span>{cap(c.unit.many)} covered</span><b>{Math.floor(raised / c.unit.amount)} of {Math.floor(goal / c.unit.amount)}</b></div>}
           {c.supporters != null && <div><Users size={16} /><span>Supporters</span><b>{c.supporters}</b></div>}
         </div>
       ) : (
@@ -98,6 +101,38 @@ function Revolving() {
   );
 }
 
+function UnitFigures({ c }) {
+  const total = Math.floor(c.goal / c.unit.amount);
+  const done = Math.min(total, Math.floor(c.raised / c.unit.amount));
+  if (!total || total > 120) return null;
+  return (
+    <div className="cp-units" aria-label={`${done} of ${total} ${c.unit.many} covered`}>
+      {Array.from({ length: total }, (_, k) => <span key={k} className={k < done ? "on" : ""}><User size={16} /></span>)}
+    </div>
+  );
+}
+
+function UnitPicker({ c }) {
+  const opts = [1, 2, 5, 10];
+  const [n, setN] = useState(1);
+  return (
+    <div className="cp-pick">
+      <h3><Utensils size={18} /> How many {c.unit.many} can you help?</h3>
+      <div className="cp-pick-opts" role="radiogroup" aria-label={`Number of ${c.unit.many}`}>
+        {opts.map((k) => (
+          <button key={k} type="button" role="radio" aria-checked={n === k} className={n === k ? "on" : ""} onClick={() => setN(k)}>
+            <b>{k}</b><small>{k === 1 ? c.unit.one : c.unit.many}</small>
+          </button>
+        ))}
+      </div>
+      <p className="cp-pick-res">
+        <b>{kes(n * c.unit.amount)}</b> gives {n} {n === 1 ? c.unit.one : c.unit.many} {c.unit.per}.
+        {c.mpesaRef && <> Pay Bill <b className="notranslate" translate="no">{site.mpesa.paybill}</b>, account <b className="notranslate" translate="no">{c.mpesaRef}</b>.</>}
+      </p>
+    </div>
+  );
+}
+
 function StudentCampaign({ c }) {
   const st = c.student || {};
   const who = [st.course, st.institution].filter(Boolean).join(" · ");
@@ -113,9 +148,11 @@ function StudentCampaign({ c }) {
         {(st.name || who) && <p className="cp-stu-who"><GraduationCap size={16} /> {[st.name, who].filter(Boolean).join(", ")}</p>}
         <p className="cp-stu-sum">{c.summary}</p>
         <Progress c={c} size="lg" />
+        {c.unit && <UnitFigures c={c} />}
         {c.body.map((p) => <p key={p.slice(0, 24)} className="cp-stu-p">{p}</p>)}
+        {c.unit && <UnitPicker c={c} />}
         {c.revolving && <Revolving />}
-        {c.mpesaRef && <p className="cp-stu-ref">M-Pesa account reference for this campaign: <b>{c.mpesaRef}</b></p>}
+        {c.mpesaRef && !c.unit && <p className="cp-stu-ref">Give by M-Pesa: Pay Bill <b className="notranslate" translate="no">{site.mpesa.paybill}</b>, account number <b className="notranslate" translate="no">{c.mpesaRef}</b></p>}
         <div className="cp-actions">
           <Link className="btn" to={c.cta[1]}>{c.cta[0]} <ArrowRight size={18} /></Link>
           <ShareButtons c={c} />
@@ -216,8 +253,8 @@ export default function Campaigns() {
           <div className="wrap">
             <div className="cp-listhead">
               <div>
-                <span className="eyebrow">Sponsor a student</span>
-                <h2>Help a student start, and keep the money working.</h2>
+                <span className="eyebrow">Fundraisers</span>
+                <h2>Every contribution reaches a student.</h2>
               </div>
             </div>
             <div className="cp-stulist">
